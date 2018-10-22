@@ -1,5 +1,4 @@
 import React from 'react';
-import TestUtils, {createRenderer, Simulate} from 'react-addons-test-utils';
 import expect from 'expect';
 import Header from './Header';
 import {mount, shallow} from 'enzyme';
@@ -23,7 +22,7 @@ describe('Header', () => {
 
     // assert
     expect(numAnchors).toEqual(3);
-  });
+  }); 
 
   it('contains no links with active class by default', () => {
     const linksWithActiveClass = shallow(<Header loading={false} />).find('.active');
