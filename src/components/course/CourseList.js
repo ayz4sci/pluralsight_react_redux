@@ -1,13 +1,13 @@
 import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
-const CourseList = ({courses}) => {
+const CourseList = ({courses, sort}) => {
     return (
         <table className="table">
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                    <th>Title</th>
+                    <th><a href="#" onClick={sort}>Title</a></th>
                     <th>Author</th>
                     <th>Category</th>
                     <th>Length</th>
@@ -23,7 +23,8 @@ const CourseList = ({courses}) => {
 };
 
 CourseList.propTypes = {
-    courses: PropTypes.array.isRequired
+    courses: PropTypes.array.isRequired,
+    sort: PropTypes.func.isRequired
 };
 
 export default CourseList;
