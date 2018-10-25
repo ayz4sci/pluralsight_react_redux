@@ -51,19 +51,8 @@ CoursesPage.propTypes = {
     actions: PropTypes.object.isRequired
 };
 
-const sort = (courses) => {
-    courses.sort((a, b) =>{
-        const x = a.title.toLowerCase();
-        const y = b.title.toLowerCase();
-        if (x < y) {return -1;}
-        if (x > y) {return 1;}
-        return 0;
-    });
-    return courses;
-}
-
 const mapStateToProps = (state, ownProps) => ({
-    courses: sort(state.courses)
+    courses: state.courses
 });
 
 const mapDispatchToProps = (dispatch)=>({
