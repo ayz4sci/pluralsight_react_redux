@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {withRouter} from 'react-router';
 import * as courseActions from '../../actions/courseActions';
 import {authorsFormattedForDropDown} from '../../selectors/selectors';
 import CourseForm from './CourseForm'
@@ -11,6 +12,14 @@ export class ManageCoursePage extends React.Component{
         course: Object.assign({}, this.props.course),
         errors: {},
         saving: false,
+        unsaved: false,
+    }
+
+    componentDidMount() {
+        this.props.router.setRouteLeaveHook(this.props.route, () => {
+          if (this.state.unsaved)
+            return 'You have unsaved course, are you sure you want to leave this page?'
+        })
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -23,7 +32,10 @@ export class ManageCoursePage extends React.Component{
         const field = event.target.name;
         let course = this.state.course;
         course[field] = event.target.value;
-        return this.setState({course: course});
+        return this.setState({
+            course: course,
+            unsaved: true
+        });
     };
 
     courseFormIsValid =() => {
@@ -44,7 +56,11 @@ export class ManageCoursePage extends React.Component{
 
         if(!this.courseFormIsValid()) return;
 
-        this.setState({saving: true});
+        this.setState({
+            saving: true,
+            unsaved: false
+        });
+
         this.props.actions.saveCourse(this.state.course)
             .then( () => this.redirect() )
             .catch( error => {
@@ -107,4 +123,4 @@ const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(courseActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ManageCoursePage));
