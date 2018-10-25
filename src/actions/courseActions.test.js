@@ -13,7 +13,7 @@ describe('Course Actions', () => {
           const course = {id: 'clean-code', title: 'Clean Code'};
 
             const expectedAction = {
-                type: types.CREATE_COURSES_SUCCESS,
+                type: types.CREATE_COURSE_SUCCESS,
                 course: course
             };
  
@@ -35,7 +35,6 @@ describe('Async Actions', () => {
   });
 
   it('should create BEGIN_AJAX_CALL and LOAD_COURSE_SUCCESS when loading courses', (done) => {
-
     const expectedActions = [
       {type: types.BEGIN_AJAX_CALL},
       {type: types.LOAD_COURSES_SUCCESS, body: { courses: [{id: 'clean-code', title: 'Clean Code'}]}}

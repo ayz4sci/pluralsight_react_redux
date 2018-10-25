@@ -7,21 +7,9 @@ import {browserHistory} from 'react-router';
 import toastr from 'toastr';
 
 class CoursesPage extends React.Component {
-    
+
     redirectToAddCoursePage = () => {
         browserHistory.push('/course');
-    }
-
-    sort = () => {
-        this.props.courses.sort((a, b) =>{
-            const x = a.title.toLowerCase();
-            const y = b.title.toLowerCase();
-            if (x < y) {return -1;}
-            if (x > y) {return 1;}
-            return 0;
-        });
-
-        this.setState({courses: this.props.course});
     }
 
     deleteCourse = (course) => {
@@ -45,7 +33,6 @@ class CoursesPage extends React.Component {
                 <br/> 
                 { courses.length > 0 ?
                     <CourseList 
-                        sort={this.sort} 
                         courses={courses}
                         deleteCourse={this.deleteCourse} />
                     :

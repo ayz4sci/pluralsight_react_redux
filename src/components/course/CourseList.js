@@ -1,14 +1,24 @@
 import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
-const CourseList = ({courses, sort, deleteCourse}) => {
+const CourseList = ({courses, deleteCourse}) => {
+
+    const sort = (courses) => {
+        courses.sort((a, b) =>{
+            const x = a.title.toLowerCase();
+            const y = b.title.toLowerCase();
+            if (x < y) {return -1;}
+            if (x > y) {return 1;}
+            return 0;
+        });
+    }
+
     return (
         <table className="table">
             <thead>
                 <tr>
                     <th>&nbsp;</th>
-                     {/* eslint-disable-next-line */}
-                    <th><a href="#" onClick={sort}>Title</a></th>
+                    <th>Title</th>
                     <th>Author</th>
                     <th>Category</th>
                     <th>Length</th>
@@ -16,6 +26,7 @@ const CourseList = ({courses, sort, deleteCourse}) => {
                 </tr>
             </thead>
             <tbody>
+                { sort(courses)}
                 { courses.map(course => 
                     <CourseListRow 
                         key={course.id} 
@@ -29,7 +40,6 @@ const CourseList = ({courses, sort, deleteCourse}) => {
 
 CourseList.propTypes = {
     courses: PropTypes.array.isRequired,
-    sort: PropTypes.func.isRequired
 };
 
 export default CourseList;
