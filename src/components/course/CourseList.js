@@ -7,6 +7,7 @@ const CourseList = ({courses, sort}) => {
             <thead>
                 <tr>
                     <th>&nbsp;</th>
+                     {/* eslint-disable-next-line */}
                     <th><a href="#" onClick={sort}>Title</a></th>
                     <th>Author</th>
                     <th>Category</th>
