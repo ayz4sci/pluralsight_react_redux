@@ -2,17 +2,6 @@ import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
 const CourseList = ({courses, deleteCourse}) => {
-
-    const sort = (courses) => {
-        courses.sort((a, b) =>{
-            const x = a.title.toLowerCase();
-            const y = b.title.toLowerCase();
-            if (x < y) {return -1;}
-            if (x > y) {return 1;}
-            return 0;
-        });
-    }
-
     return (
         <table className="table">
             <thead>
@@ -26,7 +15,6 @@ const CourseList = ({courses, deleteCourse}) => {
                 </tr>
             </thead>
             <tbody>
-                { sort(courses)}
                 { courses.map(course => 
                     <CourseListRow 
                         key={course.id} 

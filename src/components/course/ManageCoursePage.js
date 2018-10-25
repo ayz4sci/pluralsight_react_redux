@@ -16,10 +16,12 @@ export class ManageCoursePage extends React.Component{
     }
 
     componentDidMount() {
-        this.props.router.setRouteLeaveHook(this.props.route, () => {
-          if (this.state.unsaved)
-            return 'You have unsaved course, are you sure you want to leave this page?'
-        })
+        if(this.props.router){
+            this.props.router.setRouteLeaveHook(this.props.route, () => {
+            if (this.state.unsaved)
+                return 'You have unsaved course, are you sure you want to leave this page?'
+            })
+        }
     }
 
     componentWillReceiveProps = (nextProps) => {
