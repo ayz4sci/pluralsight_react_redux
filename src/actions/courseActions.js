@@ -6,10 +6,13 @@ export const loadCoursesSuccess = (courses) =>
     ({ type: types.LOAD_COURSES_SUCCESS, courses});
 
 export const createCourseSuccess = (course) => 
-    ({ type: types.CREATE_COURSES_SUCCESS, course});
+    ({ type: types.CREATE_COURSE_SUCCESS, course});
 
 export const updateCourseSuccess = (course) => 
     ({ type: types.UPDATE_COURSES_SUCCESS, course});
+
+export const deleteCourseSuccess = (course) => 
+    ({ type: types.DELETE_COURSE_SUCCESS, course});
 
 export const loadCourses = () => (
     dispatch =>{
@@ -29,6 +32,18 @@ export const saveCourse = (course) => (
             course.id ? dispatch(updateCourseSuccess(course)) 
                 : dispatch(createCourseSuccess(course));
         }).catch(error => {
+            dispatch(ajaxCallError(error));
+            throw(error);
+        });
+    }
+);
+
+export const deleteCourse = (course) => (
+    dispatch => {
+        dispatch(beginAjaxCall());
+        return courseApi.deleteCourse(course.id).then(
+             dispatch(deleteCourseSuccess(course))
+        ).catch(error => {
             dispatch(ajaxCallError(error));
             throw(error);
         });

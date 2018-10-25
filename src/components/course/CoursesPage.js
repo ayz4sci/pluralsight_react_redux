@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions'
 import CourseList from './CourseList';
 import {browserHistory} from 'react-router';
+import toastr from 'toastr';
 
 class CoursesPage extends React.Component {
     
@@ -23,6 +24,13 @@ class CoursesPage extends React.Component {
         this.setState({courses: this.props.course});
     }
 
+    deleteCourse = (course) => {
+        this.props.actions.deleteCourse(course)
+            .catch( error => {
+                toastr.error(error);
+            });
+    }
+
     render() {
         const {courses} = this.props;
         
@@ -33,7 +41,10 @@ class CoursesPage extends React.Component {
                     value="Add Course"
                     className="btn btn-primary"
                     onClick={this.redirectToAddCoursePage} />
-                <CourseList sort={this.sort} courses={courses} />
+                <CourseList 
+                    sort={this.sort} 
+                    courses={courses}
+                    deleteCourse={this.deleteCourse} />
             </div>
         );
     }

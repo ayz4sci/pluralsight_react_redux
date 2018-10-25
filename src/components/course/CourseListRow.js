@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 
-const CourseListRow = ({course}) => {
+const CourseListRow = ({course, deleteCourse}) => {
 
     return (
         <tr>
@@ -10,12 +10,19 @@ const CourseListRow = ({course}) => {
                 <td>{course.authorId}</td>
                 <td>{course.category}</td>
                 <td>{course.length}</td>
+                <td>
+                    <input type="submit"
+                        value="Delete"
+                        className="btn btn-danger btn-sm"
+                        onClick={ () => deleteCourse(course) } />
+                </td>
         </tr>
     );
 };
 
 CourseListRow.propTypes = {
-    course: PropTypes.object.isRequired
+    course: PropTypes.object.isRequired,
+    deleteCourse: PropTypes.func.isRequired
 };
 
 export default CourseListRow;
