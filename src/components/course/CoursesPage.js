@@ -41,10 +41,19 @@ class CoursesPage extends React.Component {
                     value="Add Course"
                     className="btn btn-primary"
                     onClick={this.redirectToAddCoursePage} />
-                <CourseList 
-                    sort={this.sort} 
-                    courses={courses}
-                    deleteCourse={this.deleteCourse} />
+                <br/> 
+                <br/> 
+                { courses.length > 0 ?
+                    <CourseList 
+                        sort={this.sort} 
+                        courses={courses}
+                        deleteCourse={this.deleteCourse} />
+                    :
+                    <div>
+                        <hr/> 
+                        <h3>Empty course list! Add one above.</h3>
+                    </div>
+                }
             </div>
         );
     }
