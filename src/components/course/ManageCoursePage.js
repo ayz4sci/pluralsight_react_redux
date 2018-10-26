@@ -47,6 +47,15 @@ export class ManageCoursePage extends React.Component{
         if(this.state.course.title.length < 5){
             errors.title = 'Title must be at least 5 characters.';
             formIsValid = false;
+        } else if(this.state.course.authorId.length < 1){
+            errors.authorId = 'Select a valid author.';
+            formIsValid = false;
+        } else if(this.state.course.category.length < 1){
+            errors.category = 'Field cannot be empty.';
+            formIsValid = false;
+        } else if(this.state.course.length.length < 1){
+            errors.length = 'Field cannot be empty.';
+            formIsValid = false;
         }
 
         this.setState({errors: errors});
