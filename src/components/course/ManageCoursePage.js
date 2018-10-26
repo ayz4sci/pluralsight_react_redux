@@ -13,7 +13,6 @@ export class ManageCoursePage extends React.Component{
         errors: {},
         saving: false,
         unsaved: false,
-        invalidCourseId: this.props.invalidCourseId
     }
 
     componentDidMount() {
@@ -88,19 +87,19 @@ export class ManageCoursePage extends React.Component{
     }
 
     render(){
-        if( this.state.invalidCourseId) {
-            toastr.error('Invalid course Id.');
-            this.setState({invalidCourseId: null});
-        }
-
         return (
-            <CourseForm
-                allAuthors = {this.props.authors}
-                onChange={this.updateCourseState}
-                onSave={this.saveCourse}
-                course={this.state.course}
-                errors={this.state.errors} 
-                saving={this.state.saving} />
+            <div>
+                { this.props.invalidCourseId && 
+                    <div className="alert alert-warning" role="alert">Invalid Course ID</div>
+                }
+                <CourseForm
+                    allAuthors = {this.props.authors}
+                    onChange={this.updateCourseState}
+                    onSave={this.saveCourse}
+                    course={this.state.course}
+                    errors={this.state.errors} 
+                    saving={this.state.saving} />
+            </div>
         );
     }
 }
@@ -108,6 +107,7 @@ export class ManageCoursePage extends React.Component{
 ManageCoursePage.propTypes = {
     course: PropTypes.object.isRequired,
     authors: PropTypes.array.isRequired,
+    invalidCourseId: PropTypes.bool,
     actions: PropTypes.object.isRequired,
 }
 
