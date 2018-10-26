@@ -13,6 +13,7 @@ export class ManageCoursePage extends React.Component{
         errors: {},
         saving: false,
         unsaved: false,
+        invalidCourseId: this.props.invalidCourseId
     }
 
     componentDidMount() {
@@ -87,6 +88,11 @@ export class ManageCoursePage extends React.Component{
     }
 
     render(){
+        if( this.state.invalidCourseId) {
+            toastr.error('Invalid course Id.');
+            this.setState({invalidCourseId: null});
+        }
+
         return (
             <CourseForm
                 allAuthors = {this.props.authors}
@@ -114,7 +120,9 @@ let emptyCourse= {id: '', watchHref: '', title: '', authorId: '', length: '', ca
 const getCourseById =(courses, courseId) => {
     if(courseId){
         let result = courses.filter( course => course.id === courseId);
-        if(result[0]) return result[0];
+        if(result[0]) {
+            return result[0];
+        }
     }
 
     return emptyCourse;
@@ -126,7 +134,8 @@ function mapStateToProps(state, ownProps){
 
     return {
         course: course,
-        authors: authorsFormattedForDropDown(state.authors)
+        authors: authorsFormattedForDropDown(state.authors),
+        invalidCourseId: ownProps.params.id && course.id === ""
     }
 }
 
