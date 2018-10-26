@@ -7,6 +7,7 @@ import CoursesPage from './components/course/CoursesPage';
 import ManageCoursePage from './components/course/ManageCoursePage';
 import AuthorsPage from './components/author/AuthorsPage';
 import ManageAuthorPage from './components/author/ManageAuthorPage';
+import PageNotFound from './components/errorPage/PageNotFound';
 
 export default (
     <Route path="/" component={App}>
@@ -18,5 +19,6 @@ export default (
         <Route path="author/:id" component={ManageAuthorPage} />
         <Route path="author" component={ManageAuthorPage} />
         <Route path="about" component={AboutPage} />
+        <Route path='*' exact={true} component={PageNotFound} />
     </Route>
 );
