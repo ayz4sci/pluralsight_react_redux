@@ -7,6 +7,29 @@ import {browserHistory} from 'react-router';
 import toastr from 'toastr';
 
 class CoursesPage extends React.Component {
+    
+    listIncrementSize = 5;
+
+    state = {
+        listSize: 10
+    }
+
+    componentDidMount = () =>{
+        window.addEventListener('scroll', this.onScroll, false);
+    }
+
+    componentWillUnmount = () => {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll = () => {
+        if((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 500)
+            && this.props.courses.length && this.state.listSize < this.props.courses.length){
+                this.setState(prevState => ({
+                    listSize: prevState.listSize + this.listIncrementSize
+                }))
+            }
+    }
 
     redirectToAddCoursePage = () => {
         browserHistory.push('/course');
@@ -33,7 +56,7 @@ class CoursesPage extends React.Component {
                 <br/> 
                 { !courses || courses.length > 0 ?
                     <CourseList 
-                        courses={courses}
+                        courses={courses.slice(0, this.state.listSize)}
                         deleteCourse={this.deleteCourse} />
                     :
                     <div>
