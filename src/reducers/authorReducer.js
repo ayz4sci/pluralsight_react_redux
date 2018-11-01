@@ -34,7 +34,7 @@ export default function authorReducer (state = initialState.authors, action){
     return sort(result);
 }
 
-const sort = (authors) => {
+export const sort = (authors) => {
     authors.sort((a, b) =>{
         const x = a.firstName.toLowerCase();
         const y = b.firstName.toLowerCase();

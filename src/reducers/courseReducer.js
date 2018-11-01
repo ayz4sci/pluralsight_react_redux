@@ -34,7 +34,7 @@ export default function courseReducer (state = initialState.courses, action){
     return sort(result);
 }
 
-const sort = (courses) => {
+export const sort = (courses) => {
     courses.sort((a, b) =>{
         const x = a.title.toLowerCase();
         const y = b.title.toLowerCase();

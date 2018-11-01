@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound Test renders correctly using snapshot 1`] = `
+<div>
+  <div
+    className="alert alert-danger"
+    role="alert"
+  >
+    Page Not Found!
+  </div>
+</div>
+`;

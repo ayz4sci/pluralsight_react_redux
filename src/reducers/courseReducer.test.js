@@ -1,5 +1,5 @@
 import expect from 'expect';
-import courseReducer from './courseReducer';
+import courseReducer, {sort} from './courseReducer';
 import * as actions from '../actions/courseActions';
 
 describe( 'Course Reducer', () => {
@@ -37,5 +37,19 @@ describe( 'Course Reducer', () => {
         expect(untouchedCourse.title).toEqual('A');
         expect(newState.length).toBe(3);
 
+    });
+
+    it('should sort authors by firstName', () => {
+        const courses = [
+            { title: 'C'},
+            { title: 'A'},
+            { title: 'B'},
+        ];
+
+        sort(courses);
+
+        expect(courses[0].title).toEqual('A');
+        expect(courses[1].title).toEqual('B');
+        expect(courses[2].title).toEqual('C');
     });
 });

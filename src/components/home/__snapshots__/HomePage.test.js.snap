@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Test renders correctly using snapshot 1`] = `
+<div
+  className="jumbotron"
+>
+  <h1>
+    Pluralsight Administration
+  </h1>
+  <p>
+    React, Redux and React Router in ES6 for ultra-responsive web apps.
+  </p>
+  <a
+    className="btn btn-primary btn-lg"
+    onClick={[Function]}
+    style={Object {}}
+  >
+    Learn more
+  </a>
+</div>
+`;
