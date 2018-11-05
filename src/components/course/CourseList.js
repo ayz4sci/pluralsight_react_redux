@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import CourseListRow from './CourseListRow';
 
 const CourseList = ({courses, deleteCourse}) => {
-    console.log(courses.length);
 
     return (
         <table className="table">

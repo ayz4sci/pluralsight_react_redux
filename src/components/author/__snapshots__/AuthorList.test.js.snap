@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthorList Test renders correctly using snapshot 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+        First Name
+      </th>
+      <th>
+        Last Name
+      </th>
+      <th>
+         
+      </th>
+      <th>
+         
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          B
+        </a>
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          C
+        </a>
+      </td>
+      <td />
+      <td />
+      <td>
+        <input
+          className="btn btn-danger btn-sm"
+          onClick={[Function]}
+          type="submit"
+          value="Delete"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

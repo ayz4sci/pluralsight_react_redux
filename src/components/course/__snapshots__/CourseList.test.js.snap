@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CourseList Test renders correctly using snapshot 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <tr>
+      <th>
+         
+      </th>
+      <th>
+        Title
+      </th>
+      <th>
+        Author
+      </th>
+      <th>
+        Category
+      </th>
+      <th>
+        Length
+      </th>
+      <th>
+         
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href="B"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Watch
+        </a>
+      </td>
+      <td>
+        <a
+          onClick={[Function]}
+          style={Object {}}
+        >
+          C
+        </a>
+      </td>
+      <td>
+        D
+      </td>
+      <td>
+        F
+      </td>
+      <td>
+        E
+      </td>
+      <td>
+        <input
+          className="btn btn-danger btn-sm"
+          onClick={[Function]}
+          type="submit"
+          value="Delete"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
